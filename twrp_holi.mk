@@ -9,7 +9,6 @@ DEVICE_PATH := device/qualcomm/holi
 
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product, device/android/common/device.mk)
 
 # Configure core_64_bit_only.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
@@ -26,9 +25,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Configure twrp
 $(call inherit-product, vendor/twrp/config/common.mk)
+ENABLE_VIRTUAL_AB := true
 
 # Inherit from holi device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
+$(call inherit-product, device/android/common/device.mk)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
