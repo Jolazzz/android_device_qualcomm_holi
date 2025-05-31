@@ -19,13 +19,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Configure Virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+ENABLE_VIRTUAL_AB := true
 
 # Configure SDCard replacement functionality
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Configure twrp
 $(call inherit-product, vendor/twrp/config/common.mk)
-ENABLE_VIRTUAL_AB := true
 
 # Inherit from holi device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
