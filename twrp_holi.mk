@@ -9,6 +9,7 @@ DEVICE_PATH := device/qualcomm/holi
 
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, device/android/common/device.mk)
 
 # Configure core_64_bit_only.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
