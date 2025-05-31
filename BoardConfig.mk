@@ -9,6 +9,7 @@ DEVICE_PATH := device/qualcomm/holi
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
+include device/android/common/BoardConfigCommon.mk
 
 # A/B
 AB_OTA_UPDATER := true
