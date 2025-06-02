@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/qualcomm/holi/device.mk)
 
 PRODUCT_DEVICE := holi
-PRODUCT_NAME := omni_holi
+PRODUCT_NAME := twrp_holi
 PRODUCT_BRAND := qti
 PRODUCT_MODEL := Holi for arm64
 PRODUCT_MANUFACTURER := qualcomm
