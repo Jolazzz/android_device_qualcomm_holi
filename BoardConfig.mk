@@ -7,21 +7,23 @@
 
 DEVICE_PATH := device/qualcomm/holi
 
+TARGET_SUPPORTS_64_BIT_APPS := true
+
+BOARD_STORE_RAMDISK_IN_BOOT := true
+BOARD_USES_QCOM_HARDWARE := true
+
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
-device/android/common/BoardConfigCommon.mk
 
 # A/B
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
+    system \
+    product \
     system_ext \
     vendor \
-    odm \
-    system \
-    product
+    odm
 BOARD_USES_RECOVERY_AS_BOOT := true
-BOARD_STORE_RAMDISK_IN_BOOT := true
-BOARD_USES_QCOM_HARDWARE := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -58,6 +60,18 @@ ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 endif
 
+# Dynamic Partition
+BOARD_SUPER_PARTITION_SIZE := 9126805504
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+# BOARD_QTI_DYNAMIC_PARTITIONS_SIZ=BOARD_SUPER_PARTITION_SIZE - 4MB
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9126805504
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    system \
+    system_ext \
+    vendor \
+    product \
+    odm
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 167772160
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 167772160
@@ -68,7 +82,6 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := qualcomm_dynamic_partitions
-BOARD_QUALCOMM_DYNAMIC_PARTITIONS_PARTITION_LIST := system system system_ext system_ext product product vendor vendor odm odm my_product my_product my_company my_company my_carrier my_carrier my_region my_region my_bigball my_bigball my_heytap my_heytap my_stock my_stock my_preload my_preload my_manifest my_manifest my_engineering my_engineering
 BOARD_QUALCOMM_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # Platform
